@@ -28,7 +28,10 @@
 
     .tc-feature {
         display: grid;
-        grid-template-columns: minmax(0, 46%) minmax(0, 1fr);
+        /* 55% is chosen so the media column's 16/9 height lands on the side
+           column's natural height. Narrower than that and the row is sized by
+           the side column instead, which stretches the image off 16/9. */
+        grid-template-columns: minmax(0, 55%) minmax(0, 1fr);
         gap: var(--tc-gap);
         /* stretch, not start: the media column has to reach the full row
            height, otherwise the image stops short of the side column and
@@ -42,7 +45,7 @@
     .tc-feature-media img {
         width: 100%;
         height: 100%;
-        aspect-ratio: 16 / 10;
+        aspect-ratio: 16 / 9;
         object-fit: cover;
         display: block;
     }
