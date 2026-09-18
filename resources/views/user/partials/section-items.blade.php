@@ -17,7 +17,7 @@
             <a href="{{ route('news.show', $content->shortlink) }}" style="text-decoration: none; color: inherit;">
                 <h2>{{ $content->title ?? '' }}</h2>
             </a>
-            <p>{{ $content->summary ?? '' }}</p>
+            <p class="article-desc">{{ $content->summary ?? '' }}</p>
             <x-content-date :content="$content" />
         </div>
     </div>

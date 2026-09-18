@@ -42,7 +42,7 @@
             <a href="{{ route('news.show', $item->shortlink) }}" style="text-decoration: none; color: inherit;">
                 <h2>{{ $item->title }}</h2>
             </a>
-            <p>{{ $item->summary }}</p>
+            <p class="article-desc">{{ $item->summary }}</p>
         </div>
     </div>
 @endforeach

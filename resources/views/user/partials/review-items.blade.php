@@ -87,7 +87,7 @@
             </h2>
 
             @if (!empty($review->summary))
-                <p class="rv-summary">{{ $review->summary }}</p>
+                <p class="article-desc rv-summary">{{ $review->summary }}</p>
             @endif
 
             <div class="rv-date">

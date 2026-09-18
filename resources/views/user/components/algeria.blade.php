@@ -226,7 +226,7 @@
                 <a href="{{ route('news.show', $algeria[0]->shortlink) }}" style="text-decoration: none; color: inherit;">
                     <h2>{{ $algeria[0]->title }}</h2>
                 </a>
-                <p>{{ $algeria[0]->summary }}</p>
+                <p class="article-desc">{{ $algeria[0]->summary }}</p>
             </div>
 
             <div class="algeria-list">
@@ -243,7 +243,7 @@
                         style="text-decoration: none; color: inherit;">
                         <h2>{{ $algeria[1]->title }}</h2>
                     </a>
-                    <p>{{ $algeria[1]->summary }}</p>
+                    <p class="article-desc">{{ $algeria[1]->summary }}</p>
                 </div>
 
                 <div class="algeria-list-div">

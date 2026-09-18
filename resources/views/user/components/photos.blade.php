@@ -38,7 +38,7 @@
         <a href="{{ route('news.show', $firstPhoto->shortlink) }}" style="text-decoration: none; color: inherit;">
             <h2 id="photoTitle">{{ $firstPhoto->title }}</h2>
         </a>
-        <p id="photoDescription">{{ $firstPhoto->summary }}</p>
+        <p class="article-desc" id="photoDescription">{{ $firstPhoto->summary }}</p>
     </div>
 </div>
 

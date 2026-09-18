@@ -977,7 +977,7 @@
                                     style="text-decoration: none; color: inherit;">
                                     <h2>{{ $item->title }}</h2>
                                 </a>
-                                <p>{{ $item->summary }}</p>
+                                <p class="article-desc">{{ $item->summary }}</p>
                                 @php
                                     $arMonths = ['01' => 'جانفي','02' => 'فيفري','03' => 'مارس','04' => 'أفريل','05' => 'ماي','06' => 'جوان','07' => 'جويلية','08' => 'أوت','09' => 'سبتمبر','10' => 'أكتوبر','11' => 'نوفمبر','12' => 'ديسمبر'];
                                     $cardDate = $item->published_date ?? $item->published_at ?? $item->created_at;

@@ -163,7 +163,7 @@
                 style="text-decoration: none; color: inherit;">
                 <h2>{{ $topContents[0]->content->title ?? '' }}</h2>
             </a>
-            <p>{{ $topContents[0]->content->summary ?? '' }}</p>
+            <p class="article-desc">{{ $topContents[0]->content->summary ?? '' }}</p>
         </div>
 
         <!-- Left column: small news cards -->

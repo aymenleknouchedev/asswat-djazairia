@@ -276,7 +276,7 @@
                             style="text-decoration: none; color: inherit;">
                             <h2>{{ $reviews[0]->title ?? 'عنوان الرأي' }}</h2>
                         </a>
-                        <p>{{ $reviews[0]->summary ?? 'ملخص الرأي' }}</p>
+                        <p class="article-desc">{{ $reviews[0]->summary ?? 'ملخص الرأي' }}</p>
                         <div class="feat-date">
                             {{ $reviews[0]->created_at->locale('ar')->translatedFormat('d') }}
                             {{ $arabicMonths[$reviews[0]->created_at->month - 1] }}

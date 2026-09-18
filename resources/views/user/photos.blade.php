@@ -144,7 +144,7 @@
                             style="text-decoration: none; color: inherit;">
                             <h2>{{ $featured->title }}</h2>
                         </a>
-                        <p>{{ $featured->summary }}</p>
+                        <p class="article-desc">{{ $featured->summary }}</p>
                     </div>
                 </div>
             @endif

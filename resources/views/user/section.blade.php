@@ -819,7 +819,7 @@
                                 style="text-decoration: none; color: inherit;">
                                 <h2>{{ $contents[0]->title ?? 'عنوان الخبر' }}</h2>
                             </a>
-                            <p>{{ $contents[0]->summary ?? 'ملخص الخبر' }}</p>
+                            <p class="article-desc">{{ $contents[0]->summary ?? 'ملخص الخبر' }}</p>
                         @else
                             <img loading="lazy" decoding="async" src="./user/assets/images/placeholder.jpg" alt="لا يوجد محتوى">
                             <h3>لا يوجد محتوى</h3>
@@ -843,7 +843,7 @@
                                     style="text-decoration: none; color: inherit;">
                                     <h2>{{ $contents[1]->title ?? 'عنوان الخبر' }}</h2>
                                 </a>
-                                <p>{{ $contents[1]->summary ?? 'ملخص الخبر' }}</p>
+                                <p class="article-desc">{{ $contents[1]->summary ?? 'ملخص الخبر' }}</p>
                             </div>
                         @endif
 

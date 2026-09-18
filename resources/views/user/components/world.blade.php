@@ -104,7 +104,7 @@
             <a href="{{ route('news.show', $world[0]->shortlink) }}" style="text-decoration: none; color: inherit;">
                 <h2>{{ $world[0]->title ?? '' }}</h2>
             </a>
-            <p>{{ $world[0]->summary ?? '' }}</p>
+            <p class="article-desc">{{ $world[0]->summary ?? '' }}</p>
         </div>
 
         <!-- Left column: small world cards -->

@@ -143,7 +143,7 @@
                 <a href="{{ route('news.show', $people[0]->shortlink) }}" style="text-decoration: none; color: inherit;">
                     <h2>{{ $people[0]->title ?? '' }}</h2>
                 </a>
-                <p>{{ $people[0]->summary ?? '' }}</p>
+                <p class="article-desc">{{ $people[0]->summary ?? '' }}</p>
             </div>
         </div>
 

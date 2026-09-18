@@ -10,7 +10,7 @@
                     </div>
                     <div class="custom-texts">
                         <h2>{{ $review->title }}</h2>
-                        <p>{{ $review->summary }}</p>
+                        <p class="article-desc">{{ $review->summary }}</p>
                         <span>
                             @if (isset($review->author))
                                 بقلم: {{ $review->author->name }}

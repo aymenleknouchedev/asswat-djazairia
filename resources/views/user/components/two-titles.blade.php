@@ -212,7 +212,7 @@
                         style="text-decoration: none; color: inherit;">
                         <h2>{{ $variety[0]->title ?? '' }}</h2>
                     </a>
-                    <p>{{ $variety[0]->summary ?? '' }}</p>
+                    <p class="article-desc">{{ $variety[0]->summary ?? '' }}</p>
                 </div>
 
                 <div class="two-titles-files-card-list">

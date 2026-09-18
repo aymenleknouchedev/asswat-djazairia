@@ -117,6 +117,13 @@
     src: url('../fonts/ADJ-Effra-Regular.ttf') format('truetype');
 }
 
+/* Short description / summary text on article cards across the site. Tagged
+   on the element itself because each card component styles its own <p> with a
+   more specific selector — hence !important, so one rule covers them all. */
+.article-desc {
+    font-family: 'ADJ-Effra' !important;
+}
+
 body {
     font-family: 'ADJ', Arial, 'Helvetica Neue', sans-serif;
 }

@@ -153,7 +153,7 @@
                                 style="text-decoration: none; color: inherit;">
                                 <h2>{{ $technology[0]->title ?? '' }}</h2>
                             </a>
-                            <p>{{ $technology[0]->summary ?? '' }}</p>
+                            <p class="article-desc">{{ $technology[0]->summary ?? '' }}</p>
                         </div>
                         {{-- <p>{{ $technology[0]->summary ?? '' }}</p> --}}
                     </div>
@@ -208,7 +208,7 @@
                                 style="text-decoration: none; color: inherit;">
                                 <h2>{{ $health[0]->title ?? '' }}</h2>
                             </a>
-                            <p>{{ $health[0]->summary ?? '' }}</p>
+                            <p class="article-desc">{{ $health[0]->summary ?? '' }}</p>
                         </div>
                         {{-- <p>{{ $health[0]->summary ?? '' }}</p> --}}
                     </div>
@@ -262,7 +262,7 @@
                                 style="text-decoration: none; color: inherit;">
                                 <h2>{{ $environment[0]->title ?? '' }}</h2>
                             </a>
-                            <p>{{ $environment[0]->summary ?? '' }}</p>
+                            <p class="article-desc">{{ $environment[0]->summary ?? '' }}</p>
                         </div>
                         {{-- <p>{{ $environment[0]->summary ?? '' }}</p> --}}
                     </div>

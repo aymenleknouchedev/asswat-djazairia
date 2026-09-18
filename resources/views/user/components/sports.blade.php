@@ -105,7 +105,7 @@
             <a href="{{ route('news.show', $sports[0]->shortlink) }}" style="text-decoration: none; color: inherit;">
                 <h2>{{ $sports[0]->title ?? '' }}</h2>
             </a>
-            <p>{{ $sports[0]->summary ?? '' }}</p>
+            <p class="article-desc">{{ $sports[0]->summary ?? '' }}</p>
         </div>
 
         <!-- Column 2 -->
@@ -120,7 +120,7 @@
             <a href="{{ route('news.show', $sports[1]->shortlink) }}" style="text-decoration: none; color: inherit;">
                 <h2>{{ $sports[1]->title ?? '' }}</h2>
             </a>
-            <p>{{ $sports[1]->summary ?? '' }}</p>
+            <p class="article-desc">{{ $sports[1]->summary ?? '' }}</p>
         </div>
 
         <!-- Column 3: 4 stacked rows -->

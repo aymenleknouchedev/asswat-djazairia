@@ -2370,7 +2370,7 @@
                 @endif
             </div>
             <h1>{{ $news->long_title }}</h1>
-            <p>{{ $news->summary }}</p>
+            <p class="article-desc">{{ $news->summary }}</p>
 
             @php
                 $months = [
