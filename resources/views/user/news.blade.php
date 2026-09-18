@@ -386,7 +386,7 @@
 
         .custom-article-title {
             font-size: 40px;
-            font-family: asswat-medium;
+            font-family: asswat-bold;
             color: #141414;
             line-height: 1.4;
             text-align: right;
@@ -477,7 +477,7 @@
 
         .custom-article-content h2,
         .custom-article-content h4 {
-            font-family: asswat-bold !important;
+            font-family: asswat-medium !important;
             color: #111 !important;
             text-align: right !important;
             /* Bottom margin deliberately much smaller than the top: a heading

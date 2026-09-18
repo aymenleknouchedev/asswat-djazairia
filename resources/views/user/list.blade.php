@@ -705,7 +705,7 @@
 
         .intro h2,
         .intro h4 {
-            font-family: asswat-bold !important;
+            font-family: asswat-medium !important;
             color: #111 !important;
             text-align: right !important;
             /* Bottom margin deliberately much smaller than the top: a heading
