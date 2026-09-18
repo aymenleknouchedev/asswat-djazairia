@@ -640,6 +640,7 @@
 
         .hero-content p {
             font-size: 18px;
+            font-family: 'ADJ-Effra';
             color: rgb(130, 130, 130);
             margin-bottom: 35px;
             max-width: 90%;
