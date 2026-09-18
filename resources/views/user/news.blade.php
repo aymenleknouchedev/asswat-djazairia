@@ -509,6 +509,9 @@
             .custom-article-content h3 * {
                 font-size: 20px !important;
                 line-height: 31px !important;
+                /* Justified like the body copy around them: these are
+                   paragraph-length bold lines, not headings. */
+                text-align: justify !important;
             }
         }
 
