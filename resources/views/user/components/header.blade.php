@@ -1,54 +1,111 @@
 <style>
-    .news-grid-container {
+    /* ==========================================================================
+       Top section ("En ce moment" layout)
+
+       Row 1 — a wide feature (image beside its title + summary) and a narrower
+               side column, split by a vertical rule.
+       Row 2 — four equal cards under a horizontal rule, split by vertical rules.
+
+       That is six slots, but the section is fed seven contents. The seventh
+       goes in the side column as a headline-only item under the side card:
+       the tall feature leaves that column with spare height, and the site
+       already uses image-less headline cards elsewhere, so it does not read
+       as an extra shape.
+
+       Logical properties (border-inline-start) are used throughout so the
+       rules land between the columns in the RTL flow.
+       ========================================================================== */
+
+    .tc-rule {
+        --tc-rule: 1px solid #ddd;
+        --tc-gap: 24px;
+    }
+
+    /* ===== Row 1 ===== */
+    .tc-hero {
         display: grid;
-        grid-template-columns: 8fr 2fr 2fr;
-        gap: 20px;
+        grid-template-columns: minmax(0, 1fr) 300px;
+        gap: var(--tc-gap);
     }
 
-    .news-list {
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
+    .tc-feature {
+        display: grid;
+        grid-template-columns: minmax(0, 46%) minmax(0, 1fr);
+        gap: var(--tc-gap);
+        align-items: start;
     }
 
-
-    .news-item {
-        height: 250px;
-    }
-
-    .news-item-noimage {
-        height: 110px;
-    }
-
-    .news-item-noimage h3 {
-        font-size: 12px;
-        margin: 8px 0 4px;
-        color: #74747C;
-        font-family: asswat-light;
-        font-weight: lighter;
-    }
-
-    .news-item-noimage p {
-        font-size: 16px;
-        font-family: asswat-bold;
-    }
-
-    .news-feature h3 {
-        font-size: 12px;
-        margin: 0px 0 4px;
-        color: #74747C;
-        font-family: asswat-light;
-        font-weight: lighter;
-    }
-
-    .news-item img {
+    .tc-feature-media img {
         width: 100%;
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 16 / 10;
         object-fit: cover;
         display: block;
     }
 
-    .news-item h3 {
+    .tc-feature-body h2 {
+        font-size: 26px;
+        line-height: 1.35;
+        margin: 0 0 10px;
+        font-family: asswat-bold;
+    }
+
+    .tc-feature-body .article-desc {
+        font-size: 15px;
+        line-height: 1.6;
+        color: #555;
+        margin: 0;
+    }
+
+    /* ===== Row 1, side column ===== */
+    .tc-side {
+        border-inline-start: var(--tc-rule);
+        padding-inline-start: var(--tc-gap);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .tc-side-card img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    /* The seventh content. No image, separated by a rule so it reads as a
+       related headline rather than a card that lost its picture. */
+    .tc-side-extra {
+        border-top: var(--tc-rule);
+        padding-top: 16px;
+    }
+
+    /* ===== Row 2 ===== */
+    .tc-row {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: var(--tc-gap);
+        margin-top: var(--tc-gap);
+        padding-top: var(--tc-gap);
+        border-top: var(--tc-rule);
+    }
+
+    .tc-card+.tc-card {
+        border-inline-start: var(--tc-rule);
+        padding-inline-start: var(--tc-gap);
+    }
+
+    .tc-card img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    /* ===== Shared type ===== */
+    .tc-hero h3,
+    .tc-row h3 {
         font-size: 12px;
         margin: 8px 0 4px;
         color: #74747C;
@@ -56,195 +113,173 @@
         font-weight: lighter;
     }
 
-    .news-item p {
+    .tc-side-card p,
+    .tc-side-extra p,
+    .tc-card p {
         font-size: 16px;
+        line-height: 1.4;
+        margin: 0;
         font-family: asswat-bold;
-    }
-
-    .news-feature {
-        position: relative;
-    }
-
-    .news-feature img {
-        width: 100%;
-        aspect-ratio: 4 / 3;
-        object-fit: cover;
-    }
-
-    .news-feature h2 {
-        font-size: 24px;
-        margin: 0px 0px 8px 0;
-        font-family: asswat-bold;
-    }
-
-    .news-feature h3 {
-        font-size: 12px;
-        margin: 8px 0 4px;
-        color: #74747C;
-        font-family: asswat-light;
-
-    }
-
-    .news-feature p {
-        font-size: 17px;
-        color: #555;
     }
 
     /* === Titles: underline + pointer === */
-    .news-feature h2:hover,
-    .news-item p:hover,
-    .news-item-noimage p:hover {
+    .tc-feature-body h2:hover,
+    .tc-side-card p:hover,
+    .tc-side-extra p:hover,
+    .tc-card p:hover {
         text-decoration: underline;
         cursor: pointer;
     }
 
     /* === Categories: pointer only === */
-    .news-feature h3:hover,
-    .news-item h3:hover,
-    .news-item-noimage h3:hover {
+    .tc-hero h3:hover,
+    .tc-row h3:hover {
         cursor: pointer;
     }
 
     @media (max-width: 1150px) {
-        .news-list {
-            gap: 10px;
+        .tc-rule {
+            --tc-gap: 16px;
+        }
+
+        .tc-hero {
+            grid-template-columns: minmax(0, 1fr) 260px;
+        }
+
+        .tc-feature-body h2 {
+            font-size: 22px;
         }
     }
 
     @media (max-width: 992px) {
-        .news-grid-container {
-            display: grid;
+
+        /* Feature stacks, side column drops under it, row 2 becomes 2x2. */
+        .tc-hero {
             grid-template-columns: 1fr;
-            grid-template-rows: repeat(3, auto);
         }
 
-        .news-list {
-            display: flex;
+        .tc-feature {
+            grid-template-columns: 1fr;
+        }
+
+        .tc-side {
+            border-inline-start: none;
+            padding-inline-start: 0;
+            border-top: var(--tc-rule);
+            padding-top: var(--tc-gap);
             flex-direction: row;
-            gap: 40px;
+            gap: var(--tc-gap);
         }
 
-        .news-list>* {
+        .tc-side>* {
             flex: 1 1 0;
-            max-width: 33.33%;
         }
 
-        .news-list .news-item {
-            height: 100px;
+        .tc-side-extra {
+            border-top: none;
+            padding-top: 0;
+            border-inline-start: var(--tc-rule);
+            padding-inline-start: var(--tc-gap);
         }
 
-        .news-list .news-item img {
-            display: none;
+        .tc-row {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            row-gap: var(--tc-gap);
         }
 
-        .news-list .news-item p {
-            font-size: 15px;
+        /* With two per row the rule belongs between the columns only. */
+        .tc-card+.tc-card {
+            border-inline-start: none;
+            padding-inline-start: 0;
         }
 
-        .news-list .news-item-noimage p {
-            font-size: 15px;
+        .tc-card:nth-child(even) {
+            border-inline-start: var(--tc-rule);
+            padding-inline-start: var(--tc-gap);
         }
     }
 </style>
 
-<section class="news-feature-grid" id="news-feature-grid">
-    @if(isset($topContents) && count($topContents) >= 7)
-    <div class="news-grid-container">
-        <!-- Right column: big feature -->
-        <div class="news-feature">
-            <a href="{{ route('news.show', $topContents[0]->content->shortlink) }}">
-                <img loading="lazy" decoding="async" src="{{ $topContents[0]->content->media()->wherePivot('type', 'main')->first()->path ?? '' }}"
-                    alt="{{ $topContents[0]->content->title ?? '' }}">
-            </a>
-            <h3>
-                <x-category-links :content="$topContents[0]->content" />
-            </h3>
-            <a href="{{ route('news.show', $topContents[0]->content->shortlink) }}"
-                style="text-decoration: none; color: inherit;">
-                <h2>{{ $topContents[0]->content->title ?? '' }}</h2>
-            </a>
-            <p class="article-desc">{{ $topContents[0]->content->summary ?? '' }}</p>
-        </div>
+@php
+    // Main image for a content, or '' when it has none.
+    $tcImage = fn($content) => $content->media()->wherePivot('type', 'main')->first()->path ?? '';
+@endphp
 
-        <!-- Left column: small news cards -->
-        <div class="news-list">
-            <div class="news-item">
-                <a href="{{ route('news.show', $topContents[1]->content->shortlink) }}">
-                    <img loading="lazy" decoding="async" src="{{ $topContents[1]->content->media()->wherePivot('type', 'main')->first()->path ?? '' }}"
-                        alt="News 1">
-                </a>
-                <h3>
-                    <x-category-links :content="$topContents[1]->content" />
-                </h3>
-                <a href="{{ route('news.show', $topContents[1]->content->shortlink) }}"
-                    style="text-decoration: none; color: inherit;">
-                    <p>{{ $topContents[1]->content->title ?? '' }}</p>
-                </a>
-            </div>
-            <div class="news-item">
-                <a href="{{ route('news.show', $topContents[3]->content->shortlink) }}">
-                    <img loading="lazy" decoding="async" src="{{ $topContents[3]->content->media()->wherePivot('type', 'main')->first()->path ?? '' }}"
-                        alt="News 3">
-                </a>
-                <h3>
-                    <x-category-links :content="$topContents[3]->content" />
+<section class="news-feature-grid tc-rule" id="news-feature-grid">
+    @if (isset($topContents) && count($topContents) >= 7)
+        @php
+            $feature = $topContents[0]->content;
+            $side = $topContents[1]->content;
+            $sideExtra = $topContents[2]->content;
+            $rowItems = [$topContents[3]->content, $topContents[4]->content, $topContents[5]->content, $topContents[6]->content];
+        @endphp
 
-                </h3>
-                <a href="{{ route('news.show', $topContents[3]->content->shortlink) }}"
-                    style="text-decoration: none; color: inherit;">
-                    <p>{{ $topContents[3]->content->title ?? '' }}</p>
-                </a>
-            </div>
-            <div class="news-item-noimage">
-                <h3>
-                    <x-category-links :content="$topContents[5]->content" />
+        {{-- Row 1: feature + side column --}}
+        <div class="tc-hero">
+            <article class="tc-feature">
+                <div class="tc-feature-media">
+                    <a href="{{ route('news.show', $feature->shortlink) }}">
+                        <img loading="lazy" decoding="async" src="{{ $tcImage($feature) }}"
+                            alt="{{ $feature->title ?? '' }}">
+                    </a>
+                </div>
+                <div class="tc-feature-body">
+                    <h3>
+                        <x-category-links :content="$feature" />
+                    </h3>
+                    <a href="{{ route('news.show', $feature->shortlink) }}"
+                        style="text-decoration: none; color: inherit;">
+                        <h2>{{ $feature->title ?? '' }}</h2>
+                    </a>
+                    <p class="article-desc">{{ $feature->summary ?? '' }}</p>
+                </div>
+            </article>
 
-                </h3>
-                <a href="{{ route('news.show', $topContents[5]->content->shortlink) }}"
-                    style="text-decoration: none; color: inherit;">
-                    <p>{{ $topContents[5]->content->title ?? '' }}</p>
-                </a>
-            </div>
-        </div>
-        <!-- Left column: small news cards -->
-        <div class="news-list">
-            <div class="news-item">
-                <a href="{{ route('news.show', $topContents[2]->content->shortlink) }}">
-                    <img loading="lazy" decoding="async" src="{{ $topContents[2]->content->media()->wherePivot('type', 'main')->first()->path ?? '' }}"
-                        alt="News 1">
-                </a>
-                <h3>
-                    <x-category-links :content="$topContents[2]->content" />
-                </h3>
-                <a href="{{ route('news.show', $topContents[2]->content->shortlink) }}"
-                    style="text-decoration: none; color: inherit;">
-                    <p>{{ $topContents[2]->content->title ?? '' }}</p>
-                </a>
-            </div>
-            <div class="news-item">
-                <a href="{{ route('news.show', $topContents[4]->content->shortlink) }}">
-                    <img loading="lazy" decoding="async" src="{{ $topContents[4]->content->media()->wherePivot('type', 'main')->first()->path ?? '' }}"
-                        alt="News 2">
-                </a>
-                <h3>
-                    <x-category-links :content="$topContents[4]->content" />
-                </h3>
-                <a href="{{ route('news.show', $topContents[4]->content->shortlink) }}"
-                    style="text-decoration: none; color: inherit;">
-                    <p>{{ $topContents[4]->content->title ?? '' }}</p>
-                </a>
-            </div>
-            <div class="news-item-noimage">
-                <h3>
-                    <x-category-links :content="$topContents[6]->content" />
-                </h3>
-                <a href="{{ route('news.show', $topContents[6]->content->shortlink) }}"
-                    style="text-decoration: none; color: inherit;">
-                    <p>{{ $topContents[6]->content->title ?? '' }}</p>
-                </a>
+            <div class="tc-side">
+                <article class="tc-side-card">
+                    <a href="{{ route('news.show', $side->shortlink) }}">
+                        <img loading="lazy" decoding="async" src="{{ $tcImage($side) }}"
+                            alt="{{ $side->title ?? '' }}">
+                    </a>
+                    <h3>
+                        <x-category-links :content="$side" />
+                    </h3>
+                    <a href="{{ route('news.show', $side->shortlink) }}"
+                        style="text-decoration: none; color: inherit;">
+                        <p>{{ $side->title ?? '' }}</p>
+                    </a>
+                </article>
+
+                {{-- Seventh content --}}
+                <article class="tc-side-extra">
+                    <h3>
+                        <x-category-links :content="$sideExtra" />
+                    </h3>
+                    <a href="{{ route('news.show', $sideExtra->shortlink) }}"
+                        style="text-decoration: none; color: inherit;">
+                        <p>{{ $sideExtra->title ?? '' }}</p>
+                    </a>
+                </article>
             </div>
         </div>
 
-    </div>
+        {{-- Row 2: four cards --}}
+        <div class="tc-row">
+            @foreach ($rowItems as $item)
+                <article class="tc-card">
+                    <a href="{{ route('news.show', $item->shortlink) }}">
+                        <img loading="lazy" decoding="async" src="{{ $tcImage($item) }}"
+                            alt="{{ $item->title ?? '' }}">
+                    </a>
+                    <h3>
+                        <x-category-links :content="$item" />
+                    </h3>
+                    <a href="{{ route('news.show', $item->shortlink) }}"
+                        style="text-decoration: none; color: inherit;">
+                        <p>{{ $item->title ?? '' }}</p>
+                    </a>
+                </article>
+            @endforeach
+        </div>
     @endif
 </section>
