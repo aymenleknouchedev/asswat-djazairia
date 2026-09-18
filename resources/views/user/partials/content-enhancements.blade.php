@@ -28,7 +28,7 @@
     .custom-article-content h3 * {
         color: #000 !important;
         font-size: 16px !important;
-        font-family: asswat-bold !important;
+        font-family: asswat-medium !important;
         font-weight: normal !important;
         line-height: 1.9 !important;
         text-align: right !important;
