@@ -683,12 +683,12 @@
         .intro {
             max-width: 587px;
             margin: 0 auto 60px;
-            font-size: 16px !important;
+            font-size: 18px !important;
             font-family: asswat-regular;
             color: #000000;
-            line-height: 1.625rem;
+            line-height: 1.9;
             font-weight: normal;
-            text-align: right;
+            text-align: justify;
             margin-bottom: 30px;
         }
 

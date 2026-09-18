@@ -450,6 +450,17 @@
             margin-bottom: 30px;
         }
 
+        /* Desktop reading style. Scoped to >=769px so the mobile article keeps
+           the size and ragged edge it had; this template has no other mobile
+           override for the body copy. */
+        @media (min-width: 769px) {
+            .custom-article-content {
+                font-size: 18px !important;
+                line-height: 1.9;
+                text-align: justify;
+            }
+        }
+
         .custom-article-content p span {
             font-size: 28px !important;
             font-family: asswat-regular;
