@@ -4,7 +4,8 @@
 
        Row 1 — the lead story on its own: image on one side, its text centred
                beside it.
-       Row 2 — the remaining six stories as equal cards, three per row.
+       Row 2 — the next four stories as equal cards in a single row. The
+               section is fed seven contents; the last two are not rendered.
 
        The lead keeps the full width to itself, so nothing else can force the
        row taller than the image and pull it off 16/9 — which is what the side
@@ -53,10 +54,10 @@
         margin: 0;
     }
 
-    /* ===== Row 2: the other six ===== */
+    /* ===== Row 2: the next four ===== */
     .tc-row {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: var(--tc-gap);
         margin-top: calc(var(--tc-gap) * 1.5);
     }
@@ -139,7 +140,8 @@
     @if (isset($topContents) && count($topContents) >= 7)
         @php
             $feature = $topContents[0]->content;
-            $rowItems = collect($topContents)->slice(1, 6)->map(fn($t) => $t->content);
+            // Contents 2-5. The sixth and seventh are intentionally not shown.
+            $rowItems = collect($topContents)->slice(1, 4)->map(fn($t) => $t->content);
         @endphp
 
         {{-- Row 1: the lead story on its own --}}
@@ -161,7 +163,7 @@
             </div>
         </article>
 
-        {{-- Row 2: the remaining six --}}
+        {{-- Row 2: the next four --}}
         <div class="tc-row">
             @foreach ($rowItems as $item)
                 <article class="tc-card">
