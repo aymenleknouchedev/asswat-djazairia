@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ComingSoonController;
 use App\Http\Controllers\ContentActionController;
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\ContentReviewController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LocationController;
@@ -35,6 +36,11 @@ Route::prefix('dashboard')->group(function () {
 
     // Routes dashboard  
     Route::middleware(['auth'])->group(function () {
+
+        // Contact messages (contact-us inbox)
+        Route::get('/contacts', [ContactMessageController::class, 'index'])->name('dashboard.contacts');
+        Route::post('/contact/{id}/update-status', [ContactMessageController::class, 'update_status'])->name('dashboard.contacts.update_status');
+        Route::delete('/delete-contact/{id}', [ContactMessageController::class, 'destroy'])->name('dashboard.contacts.delete');
 
         // Coming soon
         Route::get('/cvs', [ComingSoonController::class, 'index'])->name('dashboard.join-team');

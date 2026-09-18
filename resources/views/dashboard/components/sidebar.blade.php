@@ -403,6 +403,18 @@
                     </li>
                     @endcanDo
 
+                    <!-- Contact messages -->
+                    @canDo('email_access')
+                    <li class="nk-menu-item">
+                        <a href="{{ route('dashboard.contacts') }}" class="nk-menu-link">
+                            <span class="nk-menu-icon">
+                                <em class="icon ni ni-inbox"></em>
+                            </span>
+                            <span class="nk-menu-text" data-en="Contact messages" data-ar="رسائل اتصل بنا">Contact messages</span>
+                        </a>
+                    </li>
+                    @endcanDo
+
                     <!-- Emailing -->
                     @canDo('email_access')
                     <li class="nk-menu-item">
