@@ -502,6 +502,17 @@
             margin: 32px 0 12px !important;
         }
 
+        /* Bold question/subhead lines read as emphasis within the body, so they
+           track the body size instead of sitting 4px under it. Desktop only —
+           the mobile body copy is smaller. */
+        @media (min-width: 769px) {
+            .custom-article-content h3,
+            .custom-article-content h3 * {
+                font-size: 20px !important;
+                line-height: 31px !important;
+            }
+        }
+
         /* Image spacing and captions */
         .custom-article-content img {
             display: block;
