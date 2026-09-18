@@ -514,11 +514,11 @@
             background-color: #cacaca;
             margin: 24px 0;
         }
-        /* Article text/content wrapper: 78% on desktop (so reading column matches design),
+        /* Article text/content wrapper: 88% on desktop (so reading column matches design),
            full width on mobile (avoids overly narrow column + horizontal overflow). */
         .article-text-wrapper { width: 100%; margin: 0 auto; }
         @media (min-width: 992px) {
-            .article-text-wrapper { width: 78%; }
+            .article-text-wrapper { width: 88%; }
         }
 
         /* Break-out: content images/figures inside the 78% text wrapper extend to
@@ -530,10 +530,10 @@
             .custom-article-content > figure:not(.audio),
             .custom-article-content > p > img:not(.tiny-sm):not(.vvc-cgs-img):not(.vvc-cglb-img),
             .custom-article-content > img:not(.tiny-sm):not(.vvc-cgs-img):not(.vvc-cglb-img) {
-                width: 128.21% !important;
-                max-width: 128.21% !important;
-                margin-left: -14.1% !important;
-                margin-right: -14.1% !important;
+                width: 113.64% !important;
+                max-width: 113.64% !important;
+                margin-left: -6.82% !important;
+                margin-right: -6.82% !important;
             }
             /* Inside galleries: each image fills its (now wider) container. */
             .custom-article-content .vvc-cgallery-grid img,

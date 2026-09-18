@@ -681,7 +681,7 @@
         }
 
         .intro {
-            max-width: 587px;
+            max-width: 700px;
             margin: 0 auto 60px;
             font-size: 18px !important;
             font-family: asswat-regular;
