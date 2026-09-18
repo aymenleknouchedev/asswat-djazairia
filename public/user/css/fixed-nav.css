@@ -1,3 +1,9 @@
+/* === Tokens === */
+:root {
+    /* Height of the fixed main nav. Everything stacked under it offsets by this. */
+    --site-nav-height: 80px;
+}
+
 /* === Container === */
 .site-container {
     width: 1320px;
@@ -13,7 +19,7 @@
     top: 0;
     right: 0;
     left: 0;
-    height: 60px;
+    height: var(--site-nav-height);
     display: flex;
     align-items: center;
     background: #fff;
@@ -28,7 +34,7 @@
 /* === Breaking News (fixed) === */
 #site-breaking-news {
     position: fixed;
-    top: 60px;
+    top: var(--site-nav-height);
     right: 0;
     left: 0;
     height: 48px;
@@ -48,7 +54,7 @@
     /* New */
     color: #000;
     /* New */
-    margin-top: 60px;
+    margin-top: var(--site-nav-height);
     z-index: 800;
     margin-bottom: 30px;
 }
@@ -56,7 +62,7 @@
 /* === Subnav (fixed hidden, optional) === */
 #site-subnav {
     position: fixed;
-    top: 60px;
+    top: var(--site-nav-height);
     right: 0;
     left: 0;
     height: 48px;
