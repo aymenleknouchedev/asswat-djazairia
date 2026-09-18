@@ -50,6 +50,14 @@
         display: block;
     }
 
+    /* The text is far shorter than the image beside it. Rather than let the
+       difference pool underneath (217px on live content), centre the block so
+       the slack splits evenly above and below — the treatment the Axios
+       "big things" layout uses for the same mismatch. */
+    .tc-feature-body {
+        align-self: center;
+    }
+
     .tc-feature-body h2 {
         font-size: 26px;
         line-height: 1.35;
