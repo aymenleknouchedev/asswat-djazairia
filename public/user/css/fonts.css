@@ -120,8 +120,15 @@
 /* Short description / summary text on article cards across the site. Tagged
    on the element itself because each card component styles its own <p> with a
    more specific selector — hence !important, so one rule covers them all. */
-.article-desc {
+/* The class is doubled on purpose. Several card components declare their own
+   `... p { font-size: Npx !important }`, which is both !important and more
+   specific than a single class, so a plain `.article-desc` loses to them.
+   Repeating the class raises specificity without tying this to any one
+   component's selector. */
+.article-desc.article-desc {
     font-family: 'ADJ-Effra' !important;
+    font-size: 18px !important;
+    line-height: 1.6 !important;
 }
 
 body {
