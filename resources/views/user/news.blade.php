@@ -456,7 +456,7 @@
         @media (min-width: 769px) {
             .custom-article-content {
                 font-size: 18px !important;
-                line-height: 1.9;
+                line-height: 31px;
                 text-align: justify;
             }
         }

@@ -686,7 +686,7 @@
             font-size: 18px !important;
             font-family: asswat-regular;
             color: #000000;
-            line-height: 1.9;
+            line-height: 31px;
             font-weight: normal;
             text-align: justify;
             margin-bottom: 30px;
