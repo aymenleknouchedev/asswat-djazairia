@@ -397,7 +397,6 @@
             font-size: 18px;
             color: #555;
             font-family: 'ADJ-Effra';
-            font-weight: bolder;
             margin-bottom: 15px;
             text-align: right;
         }
