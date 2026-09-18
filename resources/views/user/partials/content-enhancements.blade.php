@@ -17,8 +17,10 @@
         font-family: asswat-medium !important;
         color: #111 !important;
         text-align: right !important;
-        margin-top: 35px !important;
-        margin-bottom: 35px !important;
+        /* Bottom margin deliberately much smaller than the top: a heading
+           belongs to the text that follows it, not to the block above. */
+        margin-top: 40px !important;
+        margin-bottom: 16px !important;
         font-size: 32px !important;
     }
 
@@ -33,7 +35,7 @@
     }
 
     .custom-article-content h3 {
-        margin: 24px 0 !important;
+        margin: 32px 0 12px !important;
     }
 
     .custom-article-content img {
