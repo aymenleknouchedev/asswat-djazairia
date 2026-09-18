@@ -86,7 +86,7 @@
         }
 
         .container {
-            max-width: 1208px;
+            max-width: 1308px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -2259,7 +2259,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                width: 1220px;
+                width: 1320px;
                 max-width: 100%;
                 margin: 0 auto;
                 padding: 0 20px;

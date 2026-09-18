@@ -323,7 +323,7 @@
         }
 
         .custom-container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 40px auto;
             display: flex;
             flex-direction: row;
