@@ -11,14 +11,28 @@
         /* ================== Fonts ================== */
         @font-face {
             font-family: 'asswat-bold';
-            src: url('./user/fonts/reith_qalam_bold.ttf') format('truetype');
+            src: url('./user/fonts/ADJ-Black.ttf') format('truetype');
             font-weight: bold;
         }
 
         @font-face {
             font-family: 'asswat-regular';
-            src: url('./user/fonts/reith_qalam_regular.ttf') format('truetype');
+            src: url('./user/fonts/ADJ-Regular.ttf') format('truetype');
             font-weight: normal;
+        }
+
+        /* ADJ carries no Latin letters (nor , ; ? & @ # °), so those characters
+           come from a local sans instead of the browser's default serif. */
+        @font-face {
+            font-family: 'asswat-bold';
+            src: local('Arial'), local('Helvetica'), local('Liberation Sans'), local('Segoe UI');
+            unicode-range: U+0023, U+0026, U+002C, U+003B, U+003F, U+0040, U+0041-005A, U+0061-007A, U+007B, U+007D, U+00B0, U+00C0-024F;
+        }
+
+        @font-face {
+            font-family: 'asswat-regular';
+            src: local('Arial'), local('Helvetica'), local('Liberation Sans'), local('Segoe UI');
+            unicode-range: U+0023, U+0026, U+002C, U+003B, U+003F, U+0040, U+0041-005A, U+0061-007A, U+007B, U+007D, U+00B0, U+00C0-024F;
         }
 
     

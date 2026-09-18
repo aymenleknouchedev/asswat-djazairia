@@ -1,39 +1,122 @@
-@font-face {
-    font-weight: 200;
-    font-family: 'asswat-light';
-    src: url('../fonts/reith_qalam_bold.ttf') format('woff');
-}
+/* ==========================================================================
+   ADJ — the site typeface (Awsat Digital)
+   ==========================================================================
+
+   The family ships three weights: Regular (400), Bold (700), Black (900).
+
+   It is an Arabic-only face: it has no Latin letters, and it is also missing
+   , ; ? & @ # and the degree sign, because it expects the Arabic forms
+   (، ؛ ؟ ٪). Anything it lacks would otherwise fall back to the browser
+   default (Times), so each family below pairs the ADJ files with a
+   `local()` sans-serif restricted, via unicode-range, to exactly the
+   characters ADJ does not carry. Digits stay in ADJ deliberately.
+   ========================================================================== */
 
 @font-face {
+    font-family: 'ADJ';
+    font-style: normal;
     font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/ADJ-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'ADJ';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../fonts/ADJ-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'ADJ';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url('../fonts/ADJ-Black.ttf') format('truetype');
+}
+
+/* Latin / missing-glyph companion for ADJ. */
+@font-face {
+    font-family: 'ADJ';
+    font-style: normal;
+    src: local('Arial'), local('Helvetica'), local('Liberation Sans'), local('Segoe UI');
+    unicode-range: U+0023, U+0026, U+002C, U+003B, U+003F, U+0040, U+0041-005A, U+0061-007A, U+007B, U+007D, U+00B0, U+00C0-024F;
+}
+
+/* --------------------------------------------------------------------------
+   Legacy family names.
+
+   The templates set asswat-light / -regular / -medium / -bold in ~50 files,
+   each as a single family name with no fallback of its own. Rather than
+   rewrite every one of them, the old names are re-pointed at the ADJ files
+   and keep the same relative weight order they had before. Same URLs, so the
+   browser downloads each file once.
+   -------------------------------------------------------------------------- */
+
+@font-face {
+    font-family: 'asswat-light';
+    font-display: swap;
+    src: url('../fonts/ADJ-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'asswat-light';
+    src: local('Arial'), local('Helvetica'), local('Liberation Sans'), local('Segoe UI');
+    unicode-range: U+0023, U+0026, U+002C, U+003B, U+003F, U+0040, U+0041-005A, U+0061-007A, U+007B, U+007D, U+00B0, U+00C0-024F;
+}
+
+@font-face {
     font-family: 'asswat-regular';
-    src: url('../fonts/reith_qalam_regular.ttf') format('woff');
+    font-display: swap;
+    src: url('../fonts/ADJ-Regular.ttf') format('truetype');
 }
 
 @font-face {
-    font-weight: 500;
+    font-family: 'asswat-regular';
+    src: local('Arial'), local('Helvetica'), local('Liberation Sans'), local('Segoe UI');
+    unicode-range: U+0023, U+0026, U+002C, U+003B, U+003F, U+0040, U+0041-005A, U+0061-007A, U+007B, U+007D, U+00B0, U+00C0-024F;
+}
+
+@font-face {
     font-family: 'asswat-medium';
-    src: url('../fonts/reith_qalam_bold.ttf') format('woff');
+    font-display: swap;
+    src: url('../fonts/ADJ-Bold.ttf') format('truetype');
 }
 
 @font-face {
-    font-weight: 600;
+    font-family: 'asswat-medium';
+    src: local('Arial'), local('Helvetica'), local('Liberation Sans'), local('Segoe UI');
+    unicode-range: U+0023, U+0026, U+002C, U+003B, U+003F, U+0040, U+0041-005A, U+0061-007A, U+007B, U+007D, U+00B0, U+00C0-024F;
+}
+
+@font-face {
     font-family: 'asswat-bold';
-    src: url('../fonts/reith_qalam_extra_bold.ttf') format('woff');
+    font-display: swap;
+    src: url('../fonts/ADJ-Black.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'asswat-bold';
+    src: local('Arial'), local('Helvetica'), local('Liberation Sans'), local('Segoe UI');
+    unicode-range: U+0023, U+0026, U+002C, U+003B, U+003F, U+0040, U+0041-005A, U+0061-007A, U+007B, U+007D, U+00B0, U+00C0-024F;
 }
 
 body {
-    font-family: 'asswat-regular';
+    font-family: 'ADJ', Arial, 'Helvetica Neue', sans-serif;
 }
 
 .font-r {
-    font-family: 'asswat-regular';
+    font-family: 'ADJ', Arial, 'Helvetica Neue', sans-serif;
+    font-weight: 400;
 }
 
 .font-m {
-    font-family: 'asswat-medium';
+    font-family: 'ADJ', Arial, 'Helvetica Neue', sans-serif;
+    font-weight: 700;
 }
 
 .font-b {
-    font-family: 'asswat-bold';
+    font-family: 'ADJ', Arial, 'Helvetica Neue', sans-serif;
+    font-weight: 900;
 }
