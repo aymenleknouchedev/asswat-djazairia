@@ -50,10 +50,11 @@
                         class="site-nav-link {{ request()->routeIs('newSection') && request()->route('section') === 'variety' ? 'active' : '' }}">
                         <a href="{{ route('newSection', ['section' => 'variety']) }}">منوعات</a>
                     </li>
-                    <li class="site-nav-link {{ request()->routeIs('latestNews') ? 'active' : '' }}"
-                        id="site-show-subnav"><a href="{{ route('latestNews') }}">المزيد <i
-                                class="fa-solid fa-chevron-down nav-arrow"></i>
-                        </a></li>
+                    {{-- Opens the subnav on hover; deliberately not a link. آخر الأخبار
+                         inside the dropdown is what goes to latestNews. --}}
+                    <li class="site-nav-link" id="site-show-subnav" aria-haspopup="true">
+                        <span>المزيد <i class="fa-solid fa-chevron-down nav-arrow"></i></span>
+                    </li>
                 </ul>
             </div>
             <div class="site-nav-left">
@@ -108,6 +109,9 @@
     <nav id="site-subnav">
         <div class="site-container">
             <ul class="site-subnav-links">
+                <li class="site-subnav-link {{ request()->routeIs('latestNews') ? 'active' : '' }}">
+                    <a href="{{ route('latestNews') }}">آخر الأخبار</a>
+                </li>
                 <li class="site-subnav-link {{ request()->routeIs('reviews') ? 'active' : '' }}">
                     <a href="{{ route('reviews') }}">آراء</a>
                 </li>
