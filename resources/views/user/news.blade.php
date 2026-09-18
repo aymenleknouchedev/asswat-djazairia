@@ -455,7 +455,7 @@
            override for the body copy. */
         @media (min-width: 769px) {
             .custom-article-content {
-                font-size: 18px !important;
+                font-size: 20px !important;
                 line-height: 31px;
                 text-align: justify;
             }
