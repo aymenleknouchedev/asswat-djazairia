@@ -70,6 +70,25 @@ Allow ~30 minutes for the policy to apply. Verify with:
 Test-ApplicationAccessPolicy -Identity contact@asswatdjazairia.com -AppId <MS_GRAPH_CLIENT_ID>
 ```
 
+## Current configuration (set up 18 September 2026)
+
+| Item | Value |
+| --- | --- |
+| Tenant | `asswatarabia.com` |
+| App registration | **Asswat Djazairia — Website Mail** |
+| Tenant ID | `0e40f611-21b2-4da2-9bc8-580d52c17b6e` |
+| Client ID | `fbe09975-92cf-4b28-88c1-8381e1373187` |
+| Permission | Microsoft Graph `Mail.Send` (Application), admin consent granted |
+| Client secret | description `website` — **expires 17 September 2028** |
+| Sends as | `contact@asswatdjazairia.com` |
+
+> ⚠️ **The client secret expires on 17 September 2028.** Sending stops that day
+> until a new secret is generated (Certificates & secrets → New client secret)
+> and `MS_GRAPH_CLIENT_SECRET` is updated in `.env` on the server.
+
+> ⚠️ The application access policy in step 4 below has **not** been applied yet,
+> so the app can currently send as any mailbox in the tenant.
+
 ## What to put in `.env`
 
 ```dotenv
