@@ -95,3 +95,28 @@ nav svg {
   width: 20px;
   height: 20px;
 }
+/* === 10. Post titles ===
+   Titles carry no colour of their own, so they inherit the body's #333.
+   Force them to pure black.
+
+   The rule targets the title elements rather than the anchor around them:
+   most templates put `style="text-decoration:none; color:inherit"` inline on
+   that anchor, and an inline style beats a stylesheet rule on the same
+   element — so colouring the anchor would have no effect.
+
+   .hero-content h1 is deliberately left out: on the list template that
+   headline sits over a dark hero image and is white.
+
+   The duplicated [href] / class is a specificity bump, not a typo. Several
+   card components declare e.g. `.newCategory-all-card-text h2 { color: #333
+   !important }` in a page-level <style>, which is both !important and equal
+   in specificity to a plain `a[href*="/article/"] h2` — so it would win on
+   source order. Repeating the attribute raises this rule above them. */
+a[href*="/article/"][href] h1,
+a[href*="/article/"][href] h2,
+a[href*="/article/"][href] h3,
+a[href*="/article/"][href] h4,
+a[href*="/article/"][href] p,
+.custom-article-title.custom-article-title {
+    color: #000000 !important;
+}

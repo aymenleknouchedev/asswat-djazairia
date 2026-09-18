@@ -2129,6 +2129,20 @@
                 visibility: visible;
             }
         }
+
+        /* === Post titles ===
+           Same rule as public/user/css/main.css. Repeated here because this
+           template is a standalone document that does not load main.css. The
+           doubled [href] outranks per-component rules such as
+           `.economy-card-news h2 { color: #333 }`. */
+        a[href*="/article/"][href] h1,
+        a[href*="/article/"][href] h2,
+        a[href*="/article/"][href] h3,
+        a[href*="/article/"][href] h4,
+        a[href*="/article/"][href] p {
+            color: #000000 !important;
+        }
+
     </style>
 </head>
 
