@@ -3,8 +3,8 @@
        Top section ("En ce moment" layout)
 
        Row 1 — a wide feature (image beside its title + summary) and a narrower
-               side column, split by a vertical rule.
-       Row 2 — four equal cards under a horizontal rule, split by vertical rules.
+               side column.
+       Row 2 — four equal cards.
 
        That is six slots, but the section is fed seven contents. The seventh
        goes in the side column as a headline-only item under the side card:
@@ -12,12 +12,10 @@
        already uses image-less headline cards elsewhere, so it does not read
        as an extra shape.
 
-       Logical properties (border-inline-start) are used throughout so the
-       rules land between the columns in the RTL flow.
+       Columns are separated by gap alone — no rules between posts.
        ========================================================================== */
 
-    .tc-rule {
-        --tc-rule: 1px solid #ddd;
+    .tc-section {
         --tc-gap: 24px;
     }
 
@@ -32,11 +30,18 @@
         display: grid;
         grid-template-columns: minmax(0, 46%) minmax(0, 1fr);
         gap: var(--tc-gap);
-        align-items: start;
+        /* stretch, not start: the media column has to reach the full row
+           height, otherwise the image stops short of the side column and
+           leaves a gap under it. */
+        align-items: stretch;
     }
 
+    /* aspect-ratio gives the image its intrinsic height, which is what sizes
+       the row while heights are still indefinite; once the row is resolved
+       height:100% takes over and the image fills it. */
     .tc-feature-media img {
         width: 100%;
+        height: 100%;
         aspect-ratio: 16 / 10;
         object-fit: cover;
         display: block;
@@ -58,11 +63,9 @@
 
     /* ===== Row 1, side column ===== */
     .tc-side {
-        border-inline-start: var(--tc-rule);
-        padding-inline-start: var(--tc-gap);
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 20px;
     }
 
     .tc-side-card img {
@@ -73,12 +76,8 @@
         margin-bottom: 8px;
     }
 
-    /* The seventh content. No image, separated by a rule so it reads as a
-       related headline rather than a card that lost its picture. */
-    .tc-side-extra {
-        border-top: var(--tc-rule);
-        padding-top: 16px;
-    }
+    /* The seventh content: a headline with no image, so it reads as a related
+       headline rather than a card that lost its picture. */
 
     /* ===== Row 2 ===== */
     .tc-row {
@@ -86,13 +85,6 @@
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: var(--tc-gap);
         margin-top: var(--tc-gap);
-        padding-top: var(--tc-gap);
-        border-top: var(--tc-rule);
-    }
-
-    .tc-card+.tc-card {
-        border-inline-start: var(--tc-rule);
-        padding-inline-start: var(--tc-gap);
     }
 
     .tc-card img {
@@ -138,7 +130,7 @@
     }
 
     @media (max-width: 1150px) {
-        .tc-rule {
+        .tc-section {
             --tc-gap: 16px;
         }
 
@@ -163,10 +155,6 @@
         }
 
         .tc-side {
-            border-inline-start: none;
-            padding-inline-start: 0;
-            border-top: var(--tc-rule);
-            padding-top: var(--tc-gap);
             flex-direction: row;
             gap: var(--tc-gap);
         }
@@ -175,27 +163,9 @@
             flex: 1 1 0;
         }
 
-        .tc-side-extra {
-            border-top: none;
-            padding-top: 0;
-            border-inline-start: var(--tc-rule);
-            padding-inline-start: var(--tc-gap);
-        }
-
         .tc-row {
             grid-template-columns: repeat(2, minmax(0, 1fr));
             row-gap: var(--tc-gap);
-        }
-
-        /* With two per row the rule belongs between the columns only. */
-        .tc-card+.tc-card {
-            border-inline-start: none;
-            padding-inline-start: 0;
-        }
-
-        .tc-card:nth-child(even) {
-            border-inline-start: var(--tc-rule);
-            padding-inline-start: var(--tc-gap);
         }
     }
 </style>
@@ -205,7 +175,7 @@
     $tcImage = fn($content) => $content->media()->wherePivot('type', 'main')->first()->path ?? '';
 @endphp
 
-<section class="news-feature-grid tc-rule" id="news-feature-grid">
+<section class="news-feature-grid tc-section" id="news-feature-grid">
     @if (isset($topContents) && count($topContents) >= 7)
         @php
             $feature = $topContents[0]->content;
