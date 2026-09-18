@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'أصوات جزائرية | رسائل اتصل بنا')
+@section('title', 'أصوات جزائرية | البريد الإلكتروني')
 
 @section('content')
 <div class="nk-app-root">
@@ -17,8 +17,8 @@
                         <!-- Header -->
                         <div class="nk-block-head mb-4">
                             <div class="nk-block-head-content">
-                                <h4 class="nk-block-title fw-bold text-primary" data-en="Contact messages" data-ar="رسائل اتصل بنا">
-                                    <em class="icon ni ni-inbox me-1"></em> رسائل اتصل بنا
+                                <h4 class="nk-block-title fw-bold text-primary" data-en="Contact messages" data-ar="البريد الإلكتروني">
+                                    <em class="icon ni ni-inbox me-1"></em> البريد الإلكتروني
                                     @if ($pendingCount)
                                         <span class="badge bg-danger ms-1">{{ $pendingCount }}</span>
                                     @endif

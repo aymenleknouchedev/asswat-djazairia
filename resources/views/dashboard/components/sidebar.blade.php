@@ -410,7 +410,7 @@
                             <span class="nk-menu-icon">
                                 <em class="icon ni ni-inbox"></em>
                             </span>
-                            <span class="nk-menu-text" data-en="Contact messages" data-ar="رسائل اتصل بنا">Contact messages</span>
+                            <span class="nk-menu-text" data-en="Contact messages" data-ar="البريد الإلكتروني">Contact messages</span>
                         </a>
                     </li>
                     @endcanDo
@@ -422,7 +422,7 @@
                             <span class="nk-menu-icon">
                                 <em class="icon ni ni-mail"></em>
                             </span>
-                            <span class="nk-menu-text" data-en="Emailing" data-ar="البريد الإلكتروني">Emailing</span>
+                            <span class="nk-menu-text" data-en="Emailing" data-ar="ارسال بريد">Emailing</span>
                         </a>
                     </li>
                     @endcanDo
