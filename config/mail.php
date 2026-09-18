@@ -72,6 +72,16 @@ return [
             'transport' => 'resend',
         ],
 
+        // Office 365 / Exchange Online through the Microsoft Graph API.
+        'microsoft' => [
+            'transport' => 'microsoft',
+            'tenant_id' => env('MS_GRAPH_TENANT_ID'),
+            'client_id' => env('MS_GRAPH_CLIENT_ID'),
+            'client_secret' => env('MS_GRAPH_CLIENT_SECRET'),
+            'from' => env('MS_GRAPH_FROM', env('MAIL_FROM_ADDRESS')),
+            'timeout' => env('MS_GRAPH_TIMEOUT', 30),
+        ],
+
         'sendmail' => [
             'transport' => 'sendmail',
             'path' => env('MAIL_SENDMAIL_PATH', '/usr/sbin/sendmail -bs -i'),

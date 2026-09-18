@@ -60,8 +60,8 @@
                                                     <input type="file" class="custom-file-input" name="attachments[]" multiple>
                                                     <label class="custom-file-label">اختر ملفات (يمكنك رفع أكثر من ملف)</label>
                                                 </div>
-                                                <small class="form-text text-muted" data-en="Allowed formats: pdf, docx, jpg, png" data-ar="الصيغ المسموحة: pdf, docx, jpg, png">
-                                                    الصيغ المسموحة: pdf, docx, jpg, png
+                                                <small class="form-text text-muted" data-en="Allowed formats: pdf, docx, jpg, png" data-ar="الصيغ المسموحة: pdf, docx, jpg, png — 2.5 ميغابايت كحد أقصى لكل ملف">
+                                                    الصيغ المسموحة: pdf, docx, jpg, png — 2.5 ميغابايت كحد أقصى لكل ملف
                                                 </small>
                                             </div>
                                         </div>

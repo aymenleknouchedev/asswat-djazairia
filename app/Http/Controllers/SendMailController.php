@@ -28,18 +28,29 @@ class SendMailController extends Controller
             'subject' => 'required|string|max:255',
             'body' => 'required|string',
             'attachments' => 'nullable|array|max:10',
-            'attachments.*' => 'file|max:10240|mimes:pdf,doc,docx,xls,xlsx,jpg,jpeg,png,webp,zip',
+            // Graph's sendMail endpoint caps the whole request at 4MB once base64 encoded,
+            // so keep the raw payload comfortably under that.
+            'attachments.*' => 'file|max:2560|mimes:pdf,doc,docx,xls,xlsx,jpg,jpeg,png,webp,zip',
         ], [
             'email.required' => 'البريد المرسل إليه مطلوب.',
             'email.email' => 'صيغة البريد الإلكتروني غير صحيحة.',
             'subject.required' => 'الموضوع مطلوب.',
             'body.required' => 'نص الرسالة مطلوب.',
-            'attachments.*.max' => 'حجم كل ملف يجب ألا يتجاوز 10 ميغابايت.',
+            'attachments.*.max' => 'حجم كل ملف يجب ألا يتجاوز 2.5 ميغابايت.',
             'attachments.*.mimes' => 'صيغة الملف غير مسموحة.',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors(), 'success' => false], 422);
+        }
+
+        $totalSize = collect($request->file('attachments') ?? [])->sum(fn ($file) => $file->getSize());
+
+        if ($totalSize > 2.5 * 1024 * 1024) {
+            return response()->json([
+                'errors' => ['attachments' => ['مجموع حجم المرفقات يجب ألا يتجاوز 2.5 ميغابايت.']],
+                'success' => false,
+            ], 422);
         }
 
         try {
