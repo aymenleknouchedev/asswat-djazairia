@@ -2,6 +2,12 @@
 :root {
     /* Height of the fixed main nav. Everything stacked under it offsets by this. */
     --site-nav-height: 80px;
+
+    /* Rendered logo width: 48px tall at the SVG's 2.5:1 ratio. The subnav
+       indents by logo + lead so its first link sits under the first nav link;
+       both are derived from these so they cannot drift apart again. */
+    --site-logo-width: 120px;
+    --site-nav-lead: 60px;
 }
 
 /* === Container === */
@@ -96,7 +102,7 @@
 .site-nav-right {
     display: flex;
     align-items: center;
-    gap: 60px;
+    gap: var(--site-nav-lead);
 }
 
 .site-logo {
@@ -271,8 +277,9 @@
     gap: 15px;
     list-style: none;
     margin: 0;
-    padding-right: 151.34px;
-
+    /* Aligns the first subnav link under the first nav link. Was a hand-tuned
+       151.34px, which silently went stale when the logo grew. */
+    padding-right: calc(var(--site-logo-width) + var(--site-nav-lead));
 }
 
 .site-subnav-link {
@@ -324,5 +331,18 @@
     51%,
     100% {
         opacity: 0;
+    }
+}
+/* === Narrow desktops ===
+   The nav carries twelve top-level items and .site-nav-links does not wrap,
+   so anything too wide overflows rather than reflowing. Tightening the two
+   gaps buys ~120px; the subnav indent follows via the calc() above. */
+@media (max-width: 1200px) {
+    :root {
+        --site-nav-lead: 24px;
+    }
+
+    .site-nav-links {
+        gap: 12px;
     }
 }

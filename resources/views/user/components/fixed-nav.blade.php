@@ -3,27 +3,57 @@
         <div class="site-container">
             <div class="site-nav-right">
                 <a href="{{ route('index') }}">
-                    <img loading="lazy" decoding="async" class="site-logo" src="{{ asset('user/assets/images/logo.svg') }}" alt="Logo">
+                    <img loading="eager" decoding="async" class="site-logo" src="{{ asset('user/assets/images/logo.svg') }}" alt="Logo">
                 </a>
                 <ul class="site-nav-links">
                     <li class="site-nav-link {{ request()->routeIs('latestNews') ? 'active' : '' }}"
                         id="site-show-subnav"><a href="{{ route('latestNews') }}">أخبار <i
                                 class="fa-solid fa-chevron-down nav-arrow"></i>
                         </a></li>
-                    <li class="site-nav-link {{ request()->routeIs('reviews') ? 'active' : '' }}"><a
-                            href="{{ route('reviews') }}">آراء</a></li>
-                    <li class="site-nav-link {{ request()->routeIs('windows') ? 'active' : '' }}"><a
-                            href="{{ route('windows') }}">نوافذ</a></li>
-                    <li class="site-nav-link {{ request()->routeIs('files') ? 'active' : '' }}"><a
-                            href="{{ route('files') }}">ملفات</a></li>
-                    <li class="site-nav-link {{ request()->routeIs('investigation') ? 'active' : '' }}"><a
-                            href="{{ route('investigation') }}">فحص</a></li>
-                    <li class="site-nav-link {{ request()->routeIs('videos') ? 'active' : '' }}"><a
-                            href="{{ route('videos') }}">فيديو</a></li>
-                    <li class="site-nav-link {{ request()->routeIs('podcasts') ? 'active' : '' }}"><a
-                            href="{{ route('podcasts') }}">بودكاست</a></li>
-                    <li class="site-nav-link {{ request()->routeIs('photos') ? 'active' : '' }}"><a
-                            href="{{ route('photos') }}">صور</a></li>
+                    <li
+                        class="site-nav-link {{ request()->routeIs('newSection') && request()->route('section') === 'algeria' ? 'active' : '' }}">
+                        <a href="{{ route('newSection', ['section' => 'algeria']) }}">الجزائر</a>
+                    </li>
+                    <li
+                        class="site-nav-link {{ request()->routeIs('newSection') && request()->route('section') === 'world' ? 'active' : '' }}">
+                        <a href="{{ route('newSection', ['section' => 'world']) }}">عالم</a>
+                    </li>
+                    <li
+                        class="site-nav-link {{ request()->routeIs('newSection') && request()->route('section') === 'economy' ? 'active' : '' }}">
+                        <a href="{{ route('newSection', ['section' => 'economy']) }}">اقتصاد</a>
+                    </li>
+                    <li
+                        class="site-nav-link {{ request()->routeIs('newSection') && request()->route('section') === 'sports' ? 'active' : '' }}">
+                        <a href="{{ route('newSection', ['section' => 'sports']) }}">رياضة</a>
+                    </li>
+                    <li
+                        class="site-nav-link {{ request()->routeIs('newSection') && request()->route('section') === 'people' ? 'active' : '' }}">
+                        <a href="{{ route('newSection', ['section' => 'people']) }}">ناس</a>
+                    </li>
+                    <li
+                        class="site-nav-link {{ request()->routeIs('newSection') && request()->route('section') === 'culture' ? 'active' : '' }}">
+                        <a href="{{ route('newSection', ['section' => 'culture']) }}">ثقافة وفنون</a>
+                    </li>
+                    <li
+                        class="site-nav-link {{ request()->routeIs('newSection') && request()->route('section') === 'technology' ? 'active' : '' }}">
+                        <a href="{{ route('newSection', ['section' => 'technology']) }}">تكنولوجيا</a>
+                    </li>
+                    <li
+                        class="site-nav-link {{ request()->routeIs('newSection') && request()->route('section') === 'health' ? 'active' : '' }}">
+                        <a href="{{ route('newSection', ['section' => 'health']) }}">صحة</a>
+                    </li>
+                    <li
+                        class="site-nav-link {{ request()->routeIs('newSection') && request()->route('section') === 'environment' ? 'active' : '' }}">
+                        <a href="{{ route('newSection', ['section' => 'environment']) }}">بيئة</a>
+                    </li>
+                    <li
+                        class="site-nav-link {{ request()->routeIs('newSection') && request()->route('section') === 'media' ? 'active' : '' }}">
+                        <a href="{{ route('newSection', ['section' => 'media']) }}">ميديا</a>
+                    </li>
+                    <li
+                        class="site-nav-link {{ request()->routeIs('newSection') && request()->route('section') === 'variety' ? 'active' : '' }}">
+                        <a href="{{ route('newSection', ['section' => 'variety']) }}">منوعات</a>
+                    </li>
                 </ul>
             </div>
             <div class="site-nav-left">
@@ -78,23 +108,26 @@
     <nav id="site-subnav">
         <div class="site-container">
             <ul class="site-subnav-links">
-                <li class="site-subnav-link"><a href="{{ route('newSection', ['section' => 'algeria']) }}">الجزائر</a>
+                <li class="site-subnav-link {{ request()->routeIs('reviews') ? 'active' : '' }}">
+                    <a href="{{ route('reviews') }}">آراء</a>
                 </li>
-                <li class="site-subnav-link"><a href="{{ route('newSection', ['section' => 'world']) }}">عالم</a></li>
-                <li class="site-subnav-link"><a href="{{ route('newSection', ['section' => 'economy']) }}">اقتصاد</a>
+                <li class="site-subnav-link {{ request()->routeIs('windows') ? 'active' : '' }}">
+                    <a href="{{ route('windows') }}">نوافذ</a>
                 </li>
-                <li class="site-subnav-link"><a href="{{ route('newSection', ['section' => 'sports']) }}">رياضة</a>
+                <li class="site-subnav-link {{ request()->routeIs('files') ? 'active' : '' }}">
+                    <a href="{{ route('files') }}">ملفات</a>
                 </li>
-                <li class="site-subnav-link"><a href="{{ route('newSection', ['section' => 'people']) }}">ناس</a></li>
-                <li class="site-subnav-link"><a href="{{ route('newSection', ['section' => 'culture']) }}">ثقافة
-                        وفنون</a></li>
-                <li class="site-subnav-link"><a
-                        href="{{ route('newSection', ['section' => 'technology']) }}">تكنولوجيا</a></li>
-                <li class="site-subnav-link"><a href="{{ route('newSection', ['section' => 'health']) }}">صحة</a></li>
-                <li class="site-subnav-link"><a href="{{ route('newSection', ['section' => 'environment']) }}">بيئة</a>
+                <li class="site-subnav-link {{ request()->routeIs('investigation') ? 'active' : '' }}">
+                    <a href="{{ route('investigation') }}">فحص</a>
                 </li>
-                <li class="site-subnav-link"><a href="{{ route('newSection', ['section' => 'media']) }}">ميديا</a></li>
-                <li class="site-subnav-link"><a href="{{ route('newSection', ['section' => 'variety']) }}">منوعات</a>
+                <li class="site-subnav-link {{ request()->routeIs('videos') ? 'active' : '' }}">
+                    <a href="{{ route('videos') }}">فيديو</a>
+                </li>
+                <li class="site-subnav-link {{ request()->routeIs('podcasts') ? 'active' : '' }}">
+                    <a href="{{ route('podcasts') }}">بودكاست</a>
+                </li>
+                <li class="site-subnav-link {{ request()->routeIs('photos') ? 'active' : '' }}">
+                    <a href="{{ route('photos') }}">صور</a>
                 </li>
             </ul>
         </div>
