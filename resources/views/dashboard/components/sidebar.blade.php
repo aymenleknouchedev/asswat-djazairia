@@ -422,7 +422,7 @@
                             <span class="nk-menu-icon">
                                 <em class="icon ni ni-mail"></em>
                             </span>
-                            <span class="nk-menu-text" data-en="Emailing" data-ar="ارسال بريد">Emailing</span>
+                            <span class="nk-menu-text" data-en="Emailing" data-ar="إرسال بريد">Emailing</span>
                         </a>
                     </li>
                     @endcanDo
