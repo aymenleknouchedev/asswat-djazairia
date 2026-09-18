@@ -120,15 +120,15 @@
 /* Short description / summary text on article cards across the site. Tagged
    on the element itself because each card component styles its own <p> with a
    more specific selector — hence !important, so one rule covers them all. */
-/* The class is doubled on purpose. Several card components declare their own
-   `... p { font-size: Npx !important }`, which is both !important and more
-   specific than a single class, so a plain `.article-desc` loses to them.
-   Repeating the class raises specificity without tying this to any one
-   component's selector. */
+/* Font only. Size and line-height stay with each card component, which sizes
+   its description to the card it belongs to — feature cards larger, compact
+   cards smaller. Setting them here would flatten that hierarchy.
+
+   The class is doubled on purpose: several components declare their own
+   `... p { font-family: ... !important }`, which is both !important and more
+   specific than a single class, so a plain `.article-desc` loses to them. */
 .article-desc.article-desc {
     font-family: 'ADJ-Effra' !important;
-    font-size: 15px !important;
-    line-height: 1.6 !important;
 }
 
 body {
