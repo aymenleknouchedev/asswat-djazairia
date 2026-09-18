@@ -139,6 +139,14 @@
                             confirmButtonText: 'OK'
                         });
 
+                  } else if (data.errors) {
+                      const messages = Object.values(data.errors).flat().join('\n');
+                      Swal.fire({
+                          icon: 'error',
+                          title: 'خطأ في البيانات',
+                          text: messages,
+                          confirmButtonText: 'OK'
+                      });
                   } else if (data.error) {
                       Swal.fire({
                           icon: 'error',
@@ -146,8 +154,6 @@
                           text: data.error,
                           confirmButtonText: 'OK'
                       });
-                      //
-                      alert(data.error);
                   }
               }).catch(error => {
                 Swal.fire({

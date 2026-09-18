@@ -5,6 +5,8 @@ namespace App\Mail;
 use App\Models\Mail as MailModel;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -14,6 +16,8 @@ class NormalEmail extends Mailable
     use Queueable, SerializesModels;
 
     protected MailModel $mail;
+
+    /** Absolute paths of the files to attach. */
     protected array $files;
 
     public function __construct(MailModel $mail, array $files = [])
@@ -28,8 +32,12 @@ class NormalEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
+            from: new Address(
+                config('mail.from.address', 'contact@asswatdjazairia.com'),
+                config('mail.from.name')
+            ),
+            replyTo: [new Address(config('app.admin_email', config('mail.from.address')))],
             subject: $this->mail->subject,
-            from: 'contact@asswatdjazairia.com',
         );
     }
 
@@ -42,8 +50,21 @@ class NormalEmail extends Mailable
             view: 'emails.normal',
             with: [
                 'body' => $this->mail->body,
-                'files' => $this->files,
             ],
         );
+    }
+
+    /**
+     * Real file attachments (not links).
+     *
+     * @return array<int, Attachment>
+     */
+    public function attachments(): array
+    {
+        return collect($this->files)
+            ->filter(fn ($path) => is_string($path) && is_file($path))
+            ->map(fn ($path) => Attachment::fromPath($path))
+            ->values()
+            ->all();
     }
 }

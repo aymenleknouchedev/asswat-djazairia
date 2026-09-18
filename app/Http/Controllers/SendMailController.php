@@ -8,7 +8,9 @@ use App\Models\MailAttachement;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class SendMailController extends Controller
@@ -25,6 +27,15 @@ class SendMailController extends Controller
             'email' => 'required|email',
             'subject' => 'required|string|max:255',
             'body' => 'required|string',
+            'attachments' => 'nullable|array|max:10',
+            'attachments.*' => 'file|max:10240|mimes:pdf,doc,docx,xls,xlsx,jpg,jpeg,png,webp,zip',
+        ], [
+            'email.required' => 'البريد المرسل إليه مطلوب.',
+            'email.email' => 'صيغة البريد الإلكتروني غير صحيحة.',
+            'subject.required' => 'الموضوع مطلوب.',
+            'body.required' => 'نص الرسالة مطلوب.',
+            'attachments.*.max' => 'حجم كل ملف يجب ألا يتجاوز 10 ميغابايت.',
+            'attachments.*.mimes' => 'صيغة الملف غير مسموحة.',
         ]);
 
         if ($validator->fails()) {
@@ -39,32 +50,34 @@ class SendMailController extends Controller
             $mail->body = $request->input('body');
             $mail->save();
 
-            $attachments = [];
+            // Absolute paths handed to the mailable so the files travel with the email.
+            $files = [];
 
             if ($request->hasFile('attachments')) {
                 foreach ($request->file('attachments') as $file) {
                     $uniqueName = Str::uuid()->toString() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
                     $path = $file->storeAs('attachments', $uniqueName, 'public');
 
-                    $mailAttachment = MailAttachement::create([
+                    MailAttachement::create([
                         'mail_id'   => $mail->id,
                         'file_path' => asset('storage/' . $path),
                         'file_name' => $uniqueName,
                     ]);
 
-                    $attachments[] = $mailAttachment;
+                    $files[] = Storage::disk('public')->path($path);
                 }
-            }
-
-            $files = [];
-            foreach ($attachments as $attachment) {
-                $files[] = $attachment->file_path;
             }
 
             Mail::to($mail->email)->send(new NormalEmail($mail, $files));
 
-            return response()->json(['message' => 'Email sent successfully!', 'success' => true], 200);
+            return response()->json(['message' => 'تم إرسال البريد بنجاح.', 'success' => true], 200);
         } catch (\Exception $e) {
+            Log::error('Sending mail from dashboard failed', [
+                'to' => $request->input('email'),
+                'user_id' => Auth::id(),
+                'error' => $e->getMessage(),
+            ]);
+
             return response()->json(['error' => $e->getMessage(), 'success' => false], 500);
         }
     }
