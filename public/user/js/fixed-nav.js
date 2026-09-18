@@ -1,6 +1,7 @@
 // === Subnav toggle ===
 const siteFirstNavLink = document.getElementById('site-show-subnav');
 const siteSubnav = document.getElementById('site-subnav');
+const siteMainNav = document.getElementById('site-main-nav');
 const siteSecondaryNav = document.getElementById('site-secondary-nav');
 const newsFeatureGrid = document.getElementById('news-feature-grid');
 
@@ -35,12 +36,14 @@ siteSubnav.addEventListener('mouseleave', () => {
 function showSubnav() {
     siteSubnav.style.display = 'flex'; // Flex لو التصميم يحتاج ذلك
     siteFirstNavLink.classList.add('active'); // أضف الكلاس عند الفتح
+    siteMainNav.classList.add('subnav-open'); // يخفي خط أسفل الشريط
 }
 
 function startHideTimeout() {
     hideTimeout = setTimeout(() => {
         if (!isHoveringLink && !isHoveringSubnav) {
             siteSubnav.style.display = 'none';
+            siteMainNav.classList.remove('subnav-open');
             // Only keep active if it was active from the route (page load)
             if (!isLatestNewsPageActive) {
                 siteFirstNavLink.classList.remove('active');
