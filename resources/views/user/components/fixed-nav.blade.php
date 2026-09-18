@@ -6,10 +6,6 @@
                     <img loading="eager" decoding="async" class="site-logo" src="{{ asset('user/assets/images/logo.svg') }}" alt="Logo">
                 </a>
                 <ul class="site-nav-links">
-                    <li class="site-nav-link {{ request()->routeIs('latestNews') ? 'active' : '' }}"
-                        id="site-show-subnav"><a href="{{ route('latestNews') }}">أخبار <i
-                                class="fa-solid fa-chevron-down nav-arrow"></i>
-                        </a></li>
                     <li
                         class="site-nav-link {{ request()->routeIs('newSection') && request()->route('section') === 'algeria' ? 'active' : '' }}">
                         <a href="{{ route('newSection', ['section' => 'algeria']) }}">الجزائر</a>
@@ -54,6 +50,10 @@
                         class="site-nav-link {{ request()->routeIs('newSection') && request()->route('section') === 'variety' ? 'active' : '' }}">
                         <a href="{{ route('newSection', ['section' => 'variety']) }}">منوعات</a>
                     </li>
+                    <li class="site-nav-link {{ request()->routeIs('latestNews') ? 'active' : '' }}"
+                        id="site-show-subnav"><a href="{{ route('latestNews') }}">المزيد <i
+                                class="fa-solid fa-chevron-down nav-arrow"></i>
+                        </a></li>
                 </ul>
             </div>
             <div class="site-nav-left">
