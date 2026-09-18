@@ -86,7 +86,7 @@
         <div class="site-container site-secondary-container">
             <div class="site-secondary-content">
                 <div class="site-latest-news">
-                    <span class="site-latest-label">آخر الأخبار</span>
+                    <a href="{{ route('latestNews') }}" class="site-latest-label">آخر الأخبار</a>
                     <p class="site-latest-text" id="site-latest-text"></p>
                 </div>
                 <div class="site-weather-widget">
@@ -109,9 +109,6 @@
     <nav id="site-subnav">
         <div class="site-container">
             <ul class="site-subnav-links">
-                <li class="site-subnav-link {{ request()->routeIs('latestNews') ? 'active' : '' }}">
-                    <a href="{{ route('latestNews') }}">آخر الأخبار</a>
-                </li>
                 <li class="site-subnav-link {{ request()->routeIs('reviews') ? 'active' : '' }}">
                     <a href="{{ route('reviews') }}">آراء</a>
                 </li>
