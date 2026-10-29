@@ -2135,11 +2135,11 @@
            template is a standalone document that does not load main.css. The
            doubled [href] outranks per-component rules such as
            `.economy-card-news h2 { color: #333 }`. */
-        a[href*="/article/"][href] h1,
-        a[href*="/article/"][href] h2,
-        a[href*="/article/"][href] h3,
-        a[href*="/article/"][href] h4,
-        a[href*="/article/"][href] p {
+        a[href*="/article/"][href] h1:not(.featured-post-title):not(.opinion-title):not(.mr-title):not(.theme-hero-title-mobile),
+        a[href*="/article/"][href] h2:not(.featured-post-title):not(.opinion-title):not(.mr-title):not(.theme-hero-title-mobile),
+        a[href*="/article/"][href] h3:not(.featured-post-title):not(.opinion-title):not(.mr-title):not(.theme-hero-title-mobile),
+        a[href*="/article/"][href] h4:not(.featured-post-title):not(.opinion-title):not(.mr-title):not(.theme-hero-title-mobile),
+        a[href*="/article/"][href] p:not(.featured-post-title):not(.opinion-title):not(.mr-title):not(.theme-hero-title-mobile) {
             color: #000000 !important;
         }
 

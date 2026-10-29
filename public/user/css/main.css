@@ -112,11 +112,11 @@ nav svg {
    !important }` in a page-level <style>, which is both !important and equal
    in specificity to a plain `a[href*="/article/"] h2` — so it would win on
    source order. Repeating the attribute raises this rule above them. */
-a[href*="/article/"][href] h1,
-a[href*="/article/"][href] h2,
-a[href*="/article/"][href] h3,
-a[href*="/article/"][href] h4,
-a[href*="/article/"][href] p,
+a[href*="/article/"][href] h1:not(.featured-post-title):not(.opinion-title):not(.mr-title):not(.theme-hero-title-mobile),
+a[href*="/article/"][href] h2:not(.featured-post-title):not(.opinion-title):not(.mr-title):not(.theme-hero-title-mobile),
+a[href*="/article/"][href] h3:not(.featured-post-title):not(.opinion-title):not(.mr-title):not(.theme-hero-title-mobile),
+a[href*="/article/"][href] h4:not(.featured-post-title):not(.opinion-title):not(.mr-title):not(.theme-hero-title-mobile),
+a[href*="/article/"][href] p:not(.featured-post-title):not(.opinion-title):not(.mr-title):not(.theme-hero-title-mobile),
 .custom-article-title.custom-article-title {
     color: #000000 !important;
 }
